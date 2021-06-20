@@ -145,8 +145,8 @@ p {
 .section-center {
   width: 90vw;
   margin: 0 auto;
-  max-width: 35rem;
-  margin-top: 8rem;
+  max-width: 55rem;
+  margin-top: 15rem;
 }
 @media screen and (min-width: 992px) {
   .section-center {
@@ -158,9 +158,10 @@ main {
   display: grid;
   place-items: center;
 }
+
 /*
 =============== 
-Grocery List
+Comments - List
 ===============
 */
 .section-center {
@@ -192,8 +193,15 @@ Grocery List
   color: #155724;
   background: #d4edda;
 }
+.comment-form h2 {
+  color: var(--clr-primary-1);
+  margin-top: 2rem;
+  margin-bottom: 9rem;
+  text-align: center;
+}
 .comment-form h3 {
   color: var(--clr-primary-1);
+  margin-top: 8rem;
   margin-bottom: 1.5rem;
   text-align: center;
 }
