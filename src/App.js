@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
-import List from './List';
-import Alert from './Alert';
+import React, { useState, useEffect } from "react";
+import Dropdown from "react-bootstrap/Dropdown";
+import List from "./List";
+import Alert from "./Alert";
 const getLocalStorage = () => {
-  let list = localStorage.getItem('list');
+  let list = localStorage.getItem("list");
   if (list) {
-    return (list = JSON.parse(localStorage.getItem('list')));
+    return (list = JSON.parse(localStorage.getItem("list")));
   } else {
     return [];
   }
 };
 function App() {
-  const [Comment, setComment] = useState('');
+  const [Comment, setComment] = useState("");
   const [list, setList] = useState(getLocalStorage());
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
-  const [alert, setAlert] = useState({ show: false, msg: '', type: '' });
+  const [alert, setAlert] = useState({ show: false, msg: "", type: "" });
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!Comment) {
-      showAlert(true, 'danger', 'please enter value');
+      showAlert(true, "danger", "please enter value");
     } else if (Comment && isEditing) {
       setList(
         list.map((item) => {
@@ -29,28 +29,28 @@ function App() {
           return item;
         })
       );
-      setComment('');
+      setComment("");
       setEditID(null);
       setIsEditing(false);
-      showAlert(true, 'success', 'value changed');
+      showAlert(true, "success", "value changed");
     } else {
-      showAlert(true, 'success', 'item added to the list');
+      showAlert(true, "success", "item added to the list");
       const newItem = { id: new Date().getTime().toString(), title: Comment };
 
       setList([...list, newItem]);
-      setComment('');
+      setComment("");
     }
   };
 
-  const showAlert = (show = false, type = '', msg = '') => {
+  const showAlert = (show = false, type = "", msg = "") => {
     setAlert({ show, type, msg });
   };
   const clearList = () => {
-    showAlert(true, 'danger', 'empty list');
+    showAlert(true, "danger", "empty list");
     setList([]);
   };
   const removeItem = (id) => {
-    showAlert(true, 'danger', 'item removed');
+    showAlert(true, "danger", "item removed");
     setList(list.filter((item) => item.id !== id));
   };
   const editItem = (id) => {
@@ -60,53 +60,58 @@ function App() {
     setComment(specificItem.title);
   };
   useEffect(() => {
-    localStorage.setItem('list', JSON.stringify(list));
+    localStorage.setItem("list", JSON.stringify(list));
   }, [list]);
 
-  const options = [
-    'one', 'two', 'three'
-  ];
+  const options = ["one", "two", "three"];
   const defaultOption = options[0];
 
   return (
-    <section className='section-center'>
-      <form className='comment-form' onSubmit={handleSubmit}>
-        {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
+    <>
+      <div>
         <h2>Eleni's Blog</h2>
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Dropdown Button
-          </Dropdown.Toggle>
+      </div>
+      <section className="section-center">
+        <form className="comment-form" onSubmit={handleSubmit}>
+          {alert.show && (
+            <Alert {...alert} removeAlert={showAlert} list={list} />
+          )}
+          <h2>Eleni's Blog</h2>
+          <Dropdown>
+            <Dropdown.Toggle variant="success" id="dropdown-basic">
+              Dropdown Button
+            </Dropdown.Toggle>
 
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        <h3>Comments</h3>
-        <div className='form-control'>
-          <input
-            type='text'
-            className='comment'
-            placeholder='write your comment'
-            value={Comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
-          <button type='submit' className='submit-btn'>
-            {isEditing ? 'edit' : 'submit'}
-          </button>
-        </div>
-      </form>
-      {list.length > 0 && (
-        <div className='comment-container'>
-          <List items={list} removeItem={removeItem} editItem={editItem} />
-          <button className='clear-btn' onClick={clearList}>
-            clear items
-          </button>
-        </div>
-      )}
-    </section>
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <h3>Comments</h3>
+          <div className="form-control">
+            <input
+              type="text"
+              className="comment"
+              placeholder="write your comment"
+              value={Comment}
+              onChange={(e) => setComment(e.target.value)}
+            />
+            <button type="submit" className="submit-btn">
+              {isEditing ? "edit" : "submit"}
+            </button>
+          </div>
+        </form>
+        {list.length > 0 && (
+          <div className="comment-container">
+            <List items={list} removeItem={removeItem} editItem={editItem} />
+            <button className="clear-btn" onClick={clearList}>
+              clear items
+            </button>
+          </div>
+        )}
+      </section>{" "}
+    </>
   );
 }
 
