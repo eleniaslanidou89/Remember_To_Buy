@@ -146,7 +146,9 @@ p {
   width: 90vw;
   margin: 0 auto;
   max-width: 55rem;
-  margin-top: 15rem;
+  margin-top: 10rem;
+  margin-bottom: 25rem;
+  
 }
 @media screen and (min-width: 992px) {
   .section-center {
@@ -159,17 +161,26 @@ main {
   place-items: center;
 }
 
+.dropdown{
+  color: var(--clr-primary-1);
+  margin-top: 2rem;
+  padding-bottom: 3rem;
+  text-align: center;
+}
 /*
 =============== 
 Comments - List
 ===============
 */
 .section-center {
+  background-size: center;
+  background-repeat: no-repeat;
   background: var(--clr-white);
   border-radius: var(--radius);
   box-shadow: var(--light-shadow);
   transition: var(--transition);
   padding: 2rem;
+  background-image: url("https://images.pexels.com/photos/1784578/pexels-photo-1784578.jpeg?cs=srgb&dl=pexels-zetong-li-1784578.jpg&fm=jpg");
 }
 .section-center:hover {
   box-shadow: var(--dark-shadow);
@@ -190,19 +201,21 @@ Comments - List
   background: #f8d7da;
 }
 .alert-success {
-  color: #155724;
-  background: #d4edda;
+  background: transparent;
+  border-color: transparent;
 }
 .comment-form h2 {
   color: var(--clr-primary-1);
   margin-top: 2rem;
-  margin-bottom: 9rem;
+  padding-bottom: 3rem;
   text-align: center;
 }
 .comment-form h3 {
   color: var(--clr-primary-1);
-  margin-top: 8rem;
+  margin-top: 5rem;
+  
   margin-bottom: 1.5rem;
+  
   text-align: center;
 }
 .form-control {
@@ -217,7 +230,7 @@ Comments - List
   border-bottom-left-radius: var(--radius);
   border-color: transparent;
   font-size: 1rem;
-  flex: 1 0 auto;
+  /* flex: 1 0 auto; */
   color: var(--clr-grey-5);
 }
 .comment::placeholder {
@@ -255,7 +268,7 @@ Comments - List
   justify-content: space-between;
   margin-bottom: 0.5rem;
   transition: var(--transition);
-  padding: 0.25rem 1rem;
+  padding: 0.25rem 8rem;
   border-radius: var(--radius);
   text-transform: capitalize;
 }

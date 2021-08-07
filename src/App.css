@@ -1,10 +1,15 @@
-.App {
-  text-align: center;
+/* .demo-big-content{
+  font-size: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App-header {
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+} */
+
+.App {
+  text-align: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {

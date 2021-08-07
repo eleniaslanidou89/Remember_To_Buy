@@ -1,5 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Navbar, Nav, NavDropdown, Form, FormControl, Button } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 import List from "./List";
 import Alert from "./Alert";
 const getLocalStorage = () => {
@@ -34,7 +41,7 @@ function App() {
       setIsEditing(false);
       showAlert(true, "success", "value changed");
     } else {
-      showAlert(true, "success", "item added to the list");
+      showAlert(true, "success", "comment added");
       const newItem = { id: new Date().getTime().toString(), title: Comment };
 
       setList([...list, newItem]);
@@ -50,7 +57,7 @@ function App() {
     setList([]);
   };
   const removeItem = (id) => {
-    showAlert(true, "danger", "item removed");
+    showAlert(true, "danger", "comment removed");
     setList(list.filter((item) => item.id !== id));
   };
   const editItem = (id) => {
@@ -67,25 +74,43 @@ function App() {
   const defaultOption = options[0];
 
   return (
-    <>
-      <div>
-        <h2>Eleni's Blog</h2>
-      </div>
+  <>
+   {/* <Navbar bg="light" expand="lg">
+
+  
+    <Nav className="mr-auto">
+      <Link href="#home">Home</Link>
+      <Link href="#link">Link</Link>
+      <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+        <NavDropdown href="#action/3.1">Action</NavDropdown>
+        <NavDropdown href="#action/3.2">Another action</NavDropdown>
+        <NavDropdown href="#action/3.3">Something</NavDropdown>
+        <NavDropdown />
+        <NavDropdown href="#action/3.4">Separated link</NavDropdown>
+      </NavDropdown>
+    </Nav>
+    <Form inline>
+      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+      <Button variant="outline-success">Search</Button>
+    </Form>
+  
+</Navbar> */}
+
       <section className="section-center">
         <form className="comment-form" onSubmit={handleSubmit}>
           {alert.show && (
             <Alert {...alert} removeAlert={showAlert} list={list} />
           )}
           <h2>Eleni's Blog</h2>
-          <Dropdown>
+          <Dropdown className="dropdown">
             <Dropdown.Toggle variant="success" id="dropdown-basic">
-              Dropdown Button
+              select topic
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+              <Dropdown.Item href="#/action-1">Photos</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">News</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Read a story</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           <h3>Comments</h3>
@@ -106,11 +131,11 @@ function App() {
           <div className="comment-container">
             <List items={list} removeItem={removeItem} editItem={editItem} />
             <button className="clear-btn" onClick={clearList}>
-              clear items
+              clear comments
             </button>
           </div>
         )}
-      </section>{" "}
+      </section>
     </>
   );
 }
