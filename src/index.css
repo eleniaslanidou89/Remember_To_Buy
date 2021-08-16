@@ -58,8 +58,8 @@ Global Styles
   box-sizing: border-box;
 }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background: var(--clr-grey-10);
   color: var(--clr-grey-1);
   line-height: 1.5;
@@ -148,7 +148,6 @@ p {
   max-width: 55rem;
   margin-top: 10rem;
   margin-bottom: 25rem;
-  
 }
 @media screen and (min-width: 992px) {
   .section-center {
@@ -161,7 +160,7 @@ main {
   place-items: center;
 }
 
-.dropdown{
+.dropdown {
   color: var(--clr-primary-1);
   margin-top: 2rem;
   padding-bottom: 3rem;
@@ -169,7 +168,7 @@ main {
 }
 /*
 =============== 
-Comments - List
+List
 ===============
 */
 .section-center {
@@ -180,7 +179,6 @@ Comments - List
   box-shadow: var(--light-shadow);
   transition: var(--transition);
   padding: 2rem;
-  background-image: url("https://images.pexels.com/photos/1784578/pexels-photo-1784578.jpeg?cs=srgb&dl=pexels-zetong-li-1784578.jpg&fm=jpg");
 }
 .section-center:hover {
   box-shadow: var(--dark-shadow);
@@ -204,25 +202,24 @@ Comments - List
   background: transparent;
   border-color: transparent;
 }
-.comment-form h2 {
+.item-form h2 {
   color: var(--clr-primary-1);
   margin-top: 2rem;
   padding-bottom: 3rem;
   text-align: center;
 }
-.comment-form h3 {
+.item-form h3 {
   color: var(--clr-primary-1);
   margin-top: 5rem;
-  
   margin-bottom: 1.5rem;
-  
   text-align: center;
 }
 .form-control {
   display: flex;
   justify-content: center;
 }
-.comment {
+
+.Item {
   padding: 0.25rem;
   padding-left: 1rem;
   background: var(--clr-grey-10);
@@ -233,12 +230,12 @@ Comments - List
   /* flex: 1 0 auto; */
   color: var(--clr-grey-5);
 }
-.comment::placeholder {
+.Item::placeholder {
   font-family: var(--ff-secondary);
   color: var(--clr-grey-5);
 }
 .submit-btn {
-  background: var(--clr-primary-8);
+  background: var(--clr-primary-6);
   border-color: transparent;
   flex: 0 0 5rem;
   display: grid;
@@ -258,11 +255,11 @@ Comments - List
   color: var(--clr-white);
 }
 
-.comment-container {
+.Item-container {
   margin-top: 2rem;
 }
 
-.comment-item {
+.list-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -272,11 +269,11 @@ Comments - List
   border-radius: var(--radius);
   text-transform: capitalize;
 }
-.comment-item:hover {
+.list-item:hover {
   color: var(--clr-grey-5);
   background: var(--clr-grey-10);
 }
-.comment-item:hover .title {
+.list-item:hover .title {
   color: var(--clr-grey-5);
 }
 .title {
